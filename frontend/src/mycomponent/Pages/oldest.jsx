@@ -43,7 +43,7 @@ function postunlike(currpost){
 
     let dataupdate = {
         
-          "id": currpost.id,
+          "_id": currpost._id,
           "title": currpost.title,
           "body": currpost.body,
           "oldest": true,
@@ -70,11 +70,11 @@ function deletepost(element){
 }
     function newrow(element){
         console.log("function is called")
-        let idedit = element.id + 100
-        let idnormal = element.id + 10
+        // let idedit = element.id + 100
+        // let idnormal = element.id + 10
         return(
     <tr>
-        <th scope="row" className='col-md-1'>{element.id}</th>
+        <th scope="row" className='col-md-1'>{element._id}</th>
         <td className='col-md-3'>{element.title}</td>
         <td className='col-md-6'>{element.body}</td>
         <td className='col-md-2 text-center'>
@@ -86,7 +86,7 @@ function deletepost(element){
 
         // <td className = {idnormal}><button className='btn btn-danger btn-sm' onClick={() => (postlike(element))}>Like</button></td>)
         
-    } <i class="fa fa-trash-o" aria-hidden="true" style= {{fontSize : "30px", color : "orange", marginLeft : "60px"}} onClick={() => (deletepost(element))}></i>
+    } <i className="fa fa-trash-o" aria-hidden="true" style= {{fontSize : "30px", color : "orange", marginLeft : "60px"}} onClick={() => (deletepost(element))}></i>
     </td>
 
         </tr>

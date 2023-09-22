@@ -10,7 +10,7 @@ export default function Disliked() {
     const [displayposts, setdisplayposts] = useState([])
 
     useEffect(() => {
-      axios.get("  https://my-json-server.typicode.com/mandeepgarhwal/socialpost_database/posts")
+      axios.get("http://localhost:3003/app/notes")
         .then((res) => {
             let posts = res.data.notes,
             usedposts = posts.filter ((post) => post.disliked == true && post.liked == false)
@@ -21,8 +21,8 @@ export default function Disliked() {
     function postlike(currpost){
 
             let dataupdate = {
-                  "userId": currpost.userId,
-                  "id": currpost.id,
+                  // "userId": currpost.userId,
+                  "_id": currpost._id,
                   "title": currpost.title,
                   "body": currpost.body,
                   "oldest": true,
@@ -32,7 +32,7 @@ export default function Disliked() {
 
               }
             console.log(dataupdate)
-            axios.put(`https://my-json-server.typicode.com/mandeepgarhwal/socialpost_database/posts/${currpost.id}`, dataupdate)
+            axios.put(`http://localhost:3003/app/notes/${currpost._id}`, dataupdate)
             .then((res) =>  (alert("record is updated")))
             .catch((err) => console.log(err))
             navigate("/classifiedposts/disliked")
@@ -42,15 +42,15 @@ export default function Disliked() {
     
     function newrow(element){
         console.log("function is called")
-        let idedit = element.id + 100
-        let idnormal = element.id + 10
+        // let _idedit = element.id + 100
+        // let idnormal = element.id + 10
         return(
     <tr>
-        <th scope="row" className='col-md-1'>{element.id}</th>
+        <th scope="row" className='col-md-1'>{element._id}</th>
         <td className='col-md-3'>{element.title}</td>
         <td className='col-md-6'>{element.body}</td>
         <td className='col-md-2 text-center'>
-        <i class="fa fa-thumbs-up" style= {{fontSize : "30px", color : "green"}} aria-hidden="true" onClick={() => (postlike(element))}></i>
+        <i className="fa fa-thumbs-up" style= {{fontSize : "30px", color : "green"}} aria-hidden="true" onClick={() => (postlike(element))}></i>
 
         {/* <td className = {idnormal}><button className='btn btn-danger btn-sm' onClick={() => (postlike(element))}>Like</button></td> */}
         </td>

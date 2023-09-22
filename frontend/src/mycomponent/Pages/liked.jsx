@@ -21,7 +21,7 @@ function postunlike(currpost){
 
     let dataupdate = {
           
-          "id": currpost.id,
+          "_id": currpost._id,
           "title": currpost.title,
           "body": currpost.body,
           "oldest": true,
@@ -32,7 +32,7 @@ function postunlike(currpost){
 
       }
     console.log(dataupdate)
-    axios.put(`http://localhost:3003/app/notes/${currpost.id}`, dataupdate)
+    axios.put(`http://localhost:3003/app/notes/${currpost._id}`, dataupdate)
     .then((res) =>  (alert("record is updated")))
     .catch((err) => console.log(err))
     navigate("/classifiedposts/liked")
@@ -41,16 +41,16 @@ function postunlike(currpost){
 }
     function newrow(element){
         console.log("function is called")
-        let idedit = element.id + 100
-        let idnormal = element.id + 10
+        // let idedit = element.id + 100
+        // let idnormal = element._id + 10
         return(
     <tr>
-        <th scope="row" className='col-md-1'>{element.id}</th>
+        <th scope="row" className='col-md-1'>{element._id}</th>
         <td className='col-md-3'>{element.title}</td>
         <td className='col-md-6'>{element.body}</td>
         
         <td className = 'col-md-2 text-center'>
-        <i class="fa fa-thumbs-down" style= {{fontSize : "30px", color : "red"}}aria-hidden="true" onClick={() => (postunlike(element))}></i>
+        <i className="fa fa-thumbs-down" style= {{fontSize : "30px", color : "red"}}aria-hidden="true" onClick={() => (postunlike(element))}></i>
             {/* <button className='btn btn-success btn-sm' onClick={() => (postunlike(element))}>Unlike</button> */}
             </td>
       </tr>

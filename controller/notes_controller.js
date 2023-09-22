@@ -63,7 +63,12 @@ const postnewnote =
         // }
         data = {
             "title": req.body.title,
-            "body" : req.body.body
+            "body" : req.body.body,
+            "oldest" : req.body.oldest,
+            "newest": req.body.newest,
+            "liked" : req.body.liked,
+            "disliked" : req.body.disliked
+
         }
         const ID = req.params.ID
         await notes.findByIdAndUpdate(ID, data)

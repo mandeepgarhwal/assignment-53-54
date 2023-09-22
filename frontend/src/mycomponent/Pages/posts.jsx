@@ -6,7 +6,7 @@ import React, { useEffect }  from 'react'
 import {useState} from 'react'
 import axios from 'axios'
 import react from 'react'
-import { Alert } from 'bootstrap'
+// import { Alert } from 'bootstrap'
 import {Link} from 'react-router-dom'
 
 export default function Axiosap_idemo() {
